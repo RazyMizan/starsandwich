@@ -50,7 +50,6 @@
             text-align: center;
             margin: 0;
             color: white;
-            
         }
 
         @keyframes slideIn {
@@ -170,7 +169,7 @@
     </style>
 </head>
 <body>
-    <header>HALO PELANGGAN !</header>
+    <header>WELCOME !</header>
     <div class="p">
         <div class="p2"><h2>STAR SANDWICH</h2></div>
         <h3>MENU VARIAN</h3>
@@ -180,48 +179,90 @@
                 <h4>SANDWICH ANGGUR</h4>
                 <div style="color: gold;">&#9733; &#9733; &#9733; &#9733; &#9734;</div>
                 <h4>Rp.7.500</h4>
-                <a href="https://wa.me/6282112717230?text=sandwich%20sando%20varian%20anggur"><button>BUY</button></a>
+                <a href="#"><button>BUY</button></a>
+                <a href="#"><button>KERANJANG</button></a>
             </div>
             <div class="img1">
                 <img src="https://i.imgur.com/CuO8eo8_d.png?maxwidth=520&shape=thumb&fidelity=high" class="img">
                 <h4>SANDWICH STRAWBERRY</h4>
-                   <div style="color: gold;">&#9733; &#9733; &#9733; &#9733; &#9734;</div>
+                <div style="color: gold;">&#9733; &#9733; &#9733; &#9733; &#9734;</div>
                 <h4>Rp.7.500</h4>
-                <a href="https://wa.me/6282112717230?text=sandwich%20sando%20varian%20strawberry"><button>BUY</button></a>
+                <a href="#"><button>BUY</button></a>
+                <a href="#"><button>KERANJANG</button></a>
             </div>
             <div class="img1">
                 <img src="https://i.imgur.com/xVCmHKY_d.png?maxwidth=520&shape=thumb&fidelity=high" class="img">
                 <h4>SANDWICH KIWI</h4>
                 <div style="color: gold;">&#9733; &#9733; &#9733; &#9733; &#9734;</div>
                 <h4>Rp.7.500</h4>
-                <a href="https://wa.me/6282112717230?text=sandwich%20sando%20varian%20pisang"><button>BUY</button></a>
+                <a href="#"><button>BUY</button></a>
+                <a href="#"><button>KERANJANG</button></a>
             </div>
             <div class="img1">
                 <img src="https://i.imgur.com/EFneqKI_d.png?maxwidth=520&shape=thumb&fidelity=high" class="img">
                 <h4>MIX SANDWICH</h4>
                 <div style="color: gold;">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
                 <h4>Rp.8.000</h4>
-                <a href="https://wa.me/6282112717230?text=sandwich%20sando%20mix%20varian"><button>BUY</button></a>
+                <a href="#"><button>BUY</button></a>
+                <a href="#"><button>KERANJANG</button></a>
             </div>
         </div>
-         <h3>Ada Kendala? silahkan hub di bawah ini..</h3>
+
+        <h3>Total Harga: Rp.<span id="total">0</span></h3>
+
+        <h3>Ada Kendala? silahkan hub dibawah ini..</h3>
         <div class="f">
-           
             <a href="https://api.whatsapp.com/send/?phone=%2B6285691801623&text&type=phone_number&app_absent=0">
                 <div class="bicon"><i class="fab fa-whatsapp"></i></div>
             </a>
             <a href="https://www.instagram.com/tristan.2277/#">
                 <div class="bicon"><i class="fab fa-instagram"></i></div>
             </a>
-            <a
-                href="https://www.google.com/maps?q=-6.2087634,106.845599">
-        <div class="bicon"><i class="fas fa-map-marker-alt"></i></div>
-    </a>
-</div>
+            <a href="https://www.google.com/maps?q=-6.2087634,106.845599">
+                <div class="bicon"><i class="fas fa-map-marker-alt"></i></div>
+            </a>
         </div>
     </div>
+
     <footer>
-        &copy; 2024 STAR SANDWICH. SMK MUTU JL.CIKAMPEK RAYA-PAKARAN, CIKAMPEK KOTA, KEC CIKAMPEK, KAWARANG..
+        &copy; 2024 STAR SANDWICH. AYOO BANYAK VARIANNYA LHO!.
     </footer>
+
+    <script>
+        let total = 0;
+        const totalElement = document.getElementById('total');
+
+        function addToTotal(harga) {
+            total += harga;
+            totalElement.textContent = total.toLocaleString('id-ID');
+        }
+
+        const hargaList = [7500, 7500, 7500, 8000];
+        const links = [
+            "https://wa.me/6282112717230?text=sandwich%20sando%20varian%20anggur%20seharga%207.000",
+            "https://wa.me/6282112717230?text=sandwich%20sando%20varian%20strawberry%20seharga%207.000",
+            "https://wa.me/6282112717230?text=sandwich%20sando%20varian%20pisang%20seharga%207.000",
+            "https://wa.me/6282112717230?text=sandwich%20sando%20mix%20varian%20seharga%208.000"
+        ];
+
+        document.querySelectorAll('.img1').forEach((card, index) => {
+            const buttons = card.querySelectorAll('button');
+            
+            // BUY button
+            buttons[0].addEventListener('click', (e) => {
+                e.preventDefault();
+                addToTotal(hargaList[index]);
+                setTimeout(() => {
+                    window.open(links[index], '_blank');
+                }, 300);
+            });
+
+            // LIST button
+            buttons[1].addEventListener('click', (e) => {
+                e.preventDefault();
+                addToTotal(hargaList[index]);
+            });
+        });
+    </script>
 </body>
     </html>
