@@ -211,6 +211,7 @@ const cartItems = [];
 const hargaList = [7500, 7500, 7500, 8000];
 const names = ["SANDWICH ANGGUR", "SANDWICH STRAWBERRY", "SANDWICH PISANG", "MIX SANDWICH"];
 const waNumber = "6282112717230";
+const maxItems = 20; // batas maksimal 20 item
 
 function addToTotal(harga) {
     total += harga;
@@ -234,6 +235,10 @@ function updateCartDisplay() {
 document.querySelectorAll('.img1').forEach((card, index) => {
     card.querySelector('.buy-btn').addEventListener('click', (e) => {
         e.preventDefault();
+        if (cartItems.length >= maxItems) {
+            alert('Maksimal pembelian adalah 20 item!');
+            return;
+        }
         addToTotal(hargaList[index]);
         addToCart(names[index], hargaList[index]);
         setTimeout(() => {
@@ -241,8 +246,13 @@ document.querySelectorAll('.img1').forEach((card, index) => {
             window.open(waLink, '_blank');
         }, 300);
     });
+
     card.querySelector('.cart-btn').addEventListener('click', (e) => {
         e.preventDefault();
+        if (cartItems.length >= maxItems) {
+            alert('Maksimal pembelian adalah 20 item!');
+            return;
+        }
         addToTotal(hargaList[index]);
         addToCart(names[index], hargaList[index]);
     });
@@ -271,4 +281,4 @@ document.getElementById('checkout-button').addEventListener('click', () => {
 </script>
 
 </body>
-                </html>
+    </html>
